@@ -1,0 +1,57 @@
+Index: CS_COMP.c
+===================================================================
+--- CS_COMP.c	(revision 2471)
++++ CS_COMP.c	(working copy)
+@@ -337,51 +337,13 @@
+ 	}
+ 	if (!cs_Batch)
+ 	{
+-#if _RUN_TIME < _rt_UNIXPCC
+-		/* Use this if kbhit/getch are available. */
+-		printf ("Press C to cancel, any other key to continue: ");
+-		while (kbhit ()) getch ();
+-		while (!kbhit ());
+-		cc = getch ();
+-		printf ("\n");
+-#elif __cplusplus
+-		/* Use this if kbhit/getch not available and C++ */
+-		char strbuf [MAX_INPUT];
+-		cout << "Press any key to continue: " << flush;
+-		cin.getline(strbuf, MAX_INPUT, '\n');
+-		cout << "\n" << flush;
+-		cc = (int)(strbuf[0]);
+-#else
+-		/* Use this as last resort. Note, no flush!!! */
+-		printf ("Press C to cancel, any other key to continue: ");
+-		cc = getc (stdin);
+-		printf ("\n");
+-#endif
++        return 0;
+ 	}
+ 	return (cc == 'C' || cc == 'c');
+ }
+ 
+ void acknowledge (void)
+ {
+-#if _RUN_TIME < _rt_UNIXPCC
+-	/* Use this if kbhit/getch are available. */
+-	printf ("Press any key to continue: ");
+-	while (kbhit ()) getch ();
+-	while (!kbhit ());
+-	getch ();
+-	printf ("\n");
+-#elif __cplusplus
+-	/* Use this if kbhit/getch not available and C++ */
+-	char strbuf [MAX_INPUT];
+-	cout << "Press any key to continue: " << flush;
+-	cin.getline(strbuf, MAX_INPUT, '\n');
+-	cout << "\n" << flush;
+-#else
+-	/* Use this as last resort. Note, no flush!!! */
+-	printf ("Press any key to continue: ");
+-	(void)getc (stdin);
+-	printf ("\n");
+-#endif
+ 	return;
+ }
+ 

@@ -1,0 +1,16 @@
+FROM db-deps
+
+# docker build -t db-dev . -f Dockerfile.personal
+# docker run --rm -it -v ~:/home/$USER -u $USER -h dev.local db-dev
+
+ENV USER=jdoane \
+    GROUP=jdoane \
+    UID=6045 \
+    GID=1025 \
+    MNT=/home/jdoane
+
+RUN groupadd --force --gid $GID $GROUP && \
+    useradd --create-home --gid $GROUP --uid $UID $USER && \
+    ln -s /home /Users
+
+WORKDIR $MNT
