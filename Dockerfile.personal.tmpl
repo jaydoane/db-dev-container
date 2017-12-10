@@ -3,11 +3,11 @@ FROM db-deps
 # docker build -t db-dev . -f Dockerfile.personal
 # docker run --rm -it -v ~:/home/$USER -u $USER -h dev.local db-dev
 
-ENV USER=jdoane \
-    GROUP=jdoane \
-    UID=6045 \
-    GID=1025 \
-    MNT=/home/jdoane
+ENV USER=__USER__ \
+    GROUP=__GROUP__ \
+    UID=__UID__ \
+    GID=__GID__ \
+    MNT=/home/__USER__
 
 RUN groupadd --force --gid $GID $GROUP && \
     useradd --create-home --gid $GROUP --uid $UID $USER && \

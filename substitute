@@ -1,0 +1,8 @@
+#!/bin/bash -ex
+
+cat Dockerfile.personal.tmpl | \
+    sed "s/__USER__/`id -un`/; \
+    s/__GROUP__/`id -gn`/; \
+    s/__UID__/`id -u`/; \
+    s/__GID__/`id -g`/" \
+    > Dockerfile.personal
