@@ -85,7 +85,8 @@ RUN apt-get -qq update && \
         shapely==1.6.0 \
         texttable==0.9.1 \
         unidecode==0.4.21 \
-        wsgiref==0.1.2
+        wsgiref==0.1.2 \
+        ConfigArgParse==0.12.0
 
 RUN git clone $OTP_REPO && \
     cd otp && \
