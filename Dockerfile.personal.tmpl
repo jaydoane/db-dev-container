@@ -1,7 +1,7 @@
 FROM db-deps
 
 # docker build -t db-dev . -f Dockerfile.personal
-# docker run --rm -it -v ~:/home/$USER -u $USER -h dev.local db-dev
+# docker run --rm -it -v `pwd`:/home/$USER -u $USER -h dev.local db-dev
 
 ENV USER=__USER__ \
     GROUP=__GROUP__ \
